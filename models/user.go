@@ -1,5 +1,6 @@
 package models
 
+/*User is awesome.*/
 type User struct {
 	ID        int
 	FirstName string
@@ -8,5 +9,16 @@ type User struct {
 
 var (
 	users  []*User
-	nextID int32 = 1
+	nextID = 1
 )
+
+func getUsers() []*User {
+	return users
+}
+
+func addUser(u User) (User, error) {
+	u.ID = nextID
+	nextID++
+	users = append(users, &u)
+	return u, nil
+}
